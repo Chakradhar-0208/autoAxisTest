@@ -186,19 +186,19 @@ useEffect(() => {
     });
   };
 
-  const handleLogout = async () => {
-    try {
-      await fetch(`${API_URL}/logout`, {
-        method: "GET",
-        credentials: "include",
-      });
-      localStorage.removeItem("userId");
-      setIsLogged(false);
-      checkLogin();
-    } catch (err) {
-      console.error("Logout failed:", err);
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     await fetch(`${API_URL}/logout`, {
+  //       method: "GET",
+  //       credentials: "include",
+  //     });
+  //     localStorage.removeItem("userId");
+  //     setIsLogged(false);
+  //     checkLogin();
+  //   } catch (err) {
+  //     console.error("Logout failed:", err);
+  //   }
+  // };
 
   // if (isLoading) {
   //   return (
@@ -311,7 +311,7 @@ useEffect(() => {
               <SelectTrigger>
                 <SelectValue placeholder="Select Make" />
               </SelectTrigger>
-              <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg">
+              <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg max-h-[200px]">
                 <SelectGroup >
                   <SelectLabel>Make</SelectLabel>
                   {Object.keys(makeModelMap).map((make) => (
@@ -337,7 +337,7 @@ useEffect(() => {
                 }
               />
             </SelectTrigger>
-             <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg">
+             <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg max-h-[200px]">
               <SelectGroup>
                 <SelectLabel>Model</SelectLabel>
                 {filters.make &&
@@ -359,7 +359,7 @@ useEffect(() => {
             <SelectTrigger>
               <SelectValue placeholder="Select Year" />
             </SelectTrigger>
-           <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg">
+           <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg max-h-[200px]">
               <SelectGroup>
                 <SelectLabel>Year</SelectLabel>
                 {yearOptions.map((year) => (
@@ -380,7 +380,7 @@ useEffect(() => {
             <SelectTrigger>
               <SelectValue placeholder="Max KMs Driven" />
             </SelectTrigger>
-               <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg">
+               <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg max-h-[200px]">
               <SelectGroup>
                 <SelectLabel>KMs Driven</SelectLabel>
                 {kmsOptions.map(({ label, value }) => (
@@ -400,7 +400,7 @@ useEffect(() => {
             <SelectTrigger>
               <SelectValue placeholder="Transmission" />
             </SelectTrigger>
-               <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg">
+               <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg max-h-[200px]">
               <SelectGroup>
                 <SelectLabel>Transmission</SelectLabel>
                 {transmissionOptions.map((type) => (
@@ -420,7 +420,7 @@ useEffect(() => {
             <SelectTrigger>
               <SelectValue placeholder="Select Color" />
             </SelectTrigger>
-               <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg">
+               <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg max-h-[200px]">
               <SelectGroup>
                 <SelectLabel>Color</SelectLabel>
                 {colorOptions.map((color) => (
@@ -454,7 +454,7 @@ useEffect(() => {
     <SelectTrigger className="text-xs sm:text-base w-[60%]">
       <SelectValue placeholder="Sort By" />
     </SelectTrigger>
-       <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg">
+       <SelectContent className="bg-black/30 backdrop-blur-xl border border-black/20 shadow-xl rounded-lg max-h-[200px]">
       <SelectItem value="default">Sort By</SelectItem>
       <SelectItem value="priceLowToHigh">Price: Low to High</SelectItem>
       <SelectItem value="priceHighToLow">Price: High to Low</SelectItem>

@@ -1,17 +1,20 @@
 import { Toaster } from "sonner";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Footer from "./components/Footer";
 import Signup from "./components/Signup";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 import { useEffect, useState } from "react";
-import UserCars from "./components/UserCars";
 import ListACar from "./components/ListACar";
+import UserCars from "./components/UserCars";
+import OptionBar from "./components/OptionBar";
 import UpdateCar from "./components/UpdateCar";
 import CarDetails from "./components/carDetails";
+import ScrollToTop from "./components/ScrollToTop";
 import { Skeleton } from "./components/ui/skeleton";
-import { ModeToggle } from "./components/mode-toggle";
 import { ThemeProvider } from "./components/theme-provider";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,15 +22,6 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-
 import "./App.css";
 
 function LoadingSkeleton({ path }) {
@@ -35,47 +29,9 @@ function LoadingSkeleton({ path }) {
 
   if (!isAuthPage) return null;
 
-  // return (
-  //   <div className="flex flex-col justify-center h-[100dvh] items-center min-h-[500px]">
-  //     <div className="absolute top-6 right-8">
-  //       <ModeToggle />
-  //     </div>
-  //     <Card className="w-[90dvw] min-w-[22rem] sm:w-full max-w-sm">
-  //       <CardHeader>
-  //         <Skeleton className="border-4 h-[20px] w-[180px]" />
-  //         <CardDescription className="flex flex-col space-y-1 mt-2">
-  //           <Skeleton className="border-4 h-[20px] w-[225px]" />
-  //           <Skeleton className="border-4 h-[20px] w-[100px]" />
-  //         </CardDescription>
-  //         <CardAction>
-  //           <Skeleton className="border-4 h-[20px] w-[80px]" />
-  //         </CardAction>
-  //       </CardHeader>
-  //       <form>
-  //         <CardContent className="flex flex-col gap-6">
-  //           <div className="grid gap-2">
-  //             <Skeleton className="border-4 h-[20px] w-[60px]" />
-  //             <Skeleton className="border-4 h-[2.5rem] w-full" />
-  //           </div>
-  //           <div className="grid gap-2">
-  //             <Skeleton className="border-4 h-[20px] w-[80px]" />
-  //             <Skeleton className="border-4 h-[2.5rem] w-full" />
-  //           </div>
-  //         </CardContent>
-  //         <CardFooter className="flex-col mt-4 gap-1">
-  //           <Skeleton className="border-4 h-[2.5rem] w-full flex justify-center items-center">
-  //             <Skeleton className="border-8 h-[6px] w-[80px]" />
-  //           </Skeleton>
-  //         </CardFooter>
-  //       </form>
-  //     </Card>
-  //   </div>
-  // );
-
-
   return (
     <div className="flex flex-col justify-center items-center h-[100dvh] relative overflow-hidden">
-      {/* Background iframe blur effect */}
+
       <div className="absolute top-0 left-0 w-full h-[100dvh] -z-10">
         <iframe
           src="https://gentle-priority-829072.framer.app/"
@@ -93,15 +49,12 @@ function LoadingSkeleton({ path }) {
         />
       </div>
 
-      {/* Card Skeleton */}
       <div className="w-[90dvw] max-w-sm min-h-[400px] bg-black/25 rounded-xl shadow-md p-6 space-y-6">
-        {/* Header */}
         <div className="space-y-2">
           <Skeleton className="h-6 w-2/3" />
           <Skeleton className="h-4 w-1/2" />
         </div>
 
-        {/* Inputs */}
         <div className="space-y-4">
           <div className="space-y-2">
             <Skeleton className="h-4 w-1/4" />
@@ -113,7 +66,6 @@ function LoadingSkeleton({ path }) {
           </div>
         </div>
 
-        {/* Button */}
         <div className="space-y-2">
           <Skeleton className="h-4 w-1/3" />
           <Skeleton className="h-10 w-full" />
@@ -121,25 +73,25 @@ function LoadingSkeleton({ path }) {
       </div>
     </div>
   );
-}; 
-
+}
 
 function AppRouter({ isLogged, setIsLogged, checkLogin }) {
   const location = useLocation();
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    checkLogin(); // This now runs on route changes
+  }, [location.pathname]);
   if (isLogged === null) {
     return <LoadingSkeleton path={location.pathname} />;
   }
 
   return (
     <>
-      {isLogged && (
-        <Header
-          isLogged={isLogged}
-          setIsLogged={setIsLogged}
-          checkLogin={checkLogin}
-        />
-      )}
+      <>
+        {isLogged && <Header checkLogin={checkLogin} />}
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        {isLogged && <OptionBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
+      </>
       <Routes>
         <Route
           path="/"
@@ -180,15 +132,15 @@ function App() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const checkLogin = async () => {
+    console.log("🧪 checkLogin called:", location?.pathname || "no location");
+
     try {
       const res = await fetch(`${API_URL}/check-login`, {
         credentials: "include",
       });
       const data = await res.json();
       console.log(data);
-      setTimeout(() => {
         setIsLogged(res.status === 200 && data?.message?.includes("true"));
-      }, 500);
     } catch (err) {
       console.error("Check-login failed:", err);
       setIsLogged(false);
@@ -197,12 +149,13 @@ function App() {
 
   useEffect(() => {
     checkLogin();
-  }, []);
+  }, [location.pathname]);
 
   return (
     <ThemeProvider>
       <Router>
-        <Toaster position="top-right"/>
+        <ScrollToTop />
+        <Toaster position="top-right" />
         <AppRouter
           isLogged={isLogged}
           setIsLogged={setIsLogged}
