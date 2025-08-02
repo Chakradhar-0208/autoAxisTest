@@ -1,20 +1,14 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useTheme } from "./theme-provider";
 
 const CarCard = ({ car }) => {
-  const { theme } = useTheme();
-  const navigate = useNavigate();
-
   return (
     <Link to={`/getCarById/${car._id}`}>
-      <div
-        className="border shadow-md rounded-xl p-4 w-[22rem] transition transform hover:scale-[1.02] hover:shadow-lg duration-200 h-[23.675rem] 
-      bg-gray-500 bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100">
+      <div className="border shadow-md rounded-xl p-4 w-[22rem] transition transform hover:scale-[1.02] hover:shadow-lg duration-200 h-[24rem] bg-white bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-[0.01] backdrop-saturate-100 backdrop-contrast-100">
         <img
           src={car.images[0]}
           alt={car.model}
-          className="w-full h-48 aspect-[4/3] object-cover rounded-md mb-4"
+          className="w-full h-48 aspect-[4/3] object-cover rounded-md mb-4 "
         />
 
         <div className="flex justify-between">

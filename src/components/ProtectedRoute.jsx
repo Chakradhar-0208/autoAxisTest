@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(undefined); // undefined means loading
+  const [isLoggedIn, setIsLoggedIn] = useState(undefined); 
 
   useEffect(() => {
     fetch("http://localhost:3000/check-login", {
@@ -20,12 +20,12 @@ const ProtectedRoute = ({ children }) => {
       })
       .catch((err) => {
         console.error("Login check failed:", err);
-        setIsLoggedIn(false); // fallback
+        setIsLoggedIn(false); 
       });
   }, []);
 
   if (isLoggedIn === undefined) {
-    return <div>Loading...</div>; // or spinner
+    return <div>Loading...</div>;
   }
 
   if (!isLoggedIn) {

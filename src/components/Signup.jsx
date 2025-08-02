@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ModeToggle } from "./mode-toggle";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -70,30 +69,13 @@ const Signup = () => {
   };
 
   return (
-    // <div className="flex  dark:bg-[#050505] flex-col justify-center items-center h-[100dvh] min-h-[500px]">
     <div
       className="flex flex-col justify-center items-center h-[100dvh] relative"
       style={{ overflow: "hidden" }}
     >
       <div className="absolute top-0 left-0 w-full h-[100dvh] -z-10">
-        <iframe
-          src="https://gentle-priority-829072.framer.app/"
-          style={{
-          opacity:0.8   ,
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "130vh", // Push it far down
-            border: "none",
-            zIndex: -1, // Ensure it's behind the form
-          }}
-          allow="fullscreen"
-        ></iframe>
+  
       </div>
-      {/* <div className="absolute top-6 right-8">
-        <ModeToggle />
-      </div> */}
       <Card className="w-[90dvw] bg-black/25 min-w-[20rem] sm:w-full max-w-sm">
         <CardHeader>
           <CardTitle>Create your account</CardTitle>

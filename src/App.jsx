@@ -1,4 +1,5 @@
 import { Toaster } from "sonner";
+import LightRays from "./components/LightRays";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -79,7 +80,7 @@ function AppRouter({ isLogged, setIsLogged, checkLogin }) {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   useEffect(() => {
-    checkLogin(); // This now runs on route changes
+    checkLogin(); 
   }, [location.pathname]);
   if (isLogged === null) {
     return <LoadingSkeleton path={location.pathname} />;
@@ -88,10 +89,35 @@ function AppRouter({ isLogged, setIsLogged, checkLogin }) {
   return (
     <>
       <>
-        {isLogged && <Header checkLogin={checkLogin} />}
+        {isLogged && <Header  />}
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         {isLogged && <OptionBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
       </>
+           <div  style={{
+          opacity:0.9   ,
+          position: "fixed",
+          top: "-80px",
+          left: 0,
+          width: "100%",
+          height: "110vh",
+          border: "none",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+        allow="fullscreen">
+  <LightRays
+    raysOrigin="top-center"
+    raysColor="#ffffff"
+    raysSpeed={0.8}
+    lightSpread={1.3}
+    rayLength={3}
+    followMouse={true}
+    mouseInfluence={0.1}
+    noiseAmount={0.1}
+    distortion={0.01}
+    className="custom-rays"
+  />
+</div>
       <Routes>
         <Route
           path="/"
@@ -132,14 +158,13 @@ function App() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const checkLogin = async () => {
-    console.log("🧪 checkLogin called:", location?.pathname || "no location");
 
     try {
       const res = await fetch(`${API_URL}/check-login`, {
         credentials: "include",
       });
       const data = await res.json();
-      console.log(data);
+
         setIsLogged(res.status === 200 && data?.message?.includes("true"));
     } catch (err) {
       console.error("Check-login failed:", err);

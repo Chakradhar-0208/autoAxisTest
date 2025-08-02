@@ -37,6 +37,9 @@ const ListACar = () => {
     e.preventDefault()
     setIsSubmitting(true)
 
+      toast("Uploading your car...", {
+    description: "Please wait while we post your listing.",
+  });
     const form = new FormData()
 
     if (formData.year) {
@@ -93,21 +96,8 @@ const ListACar = () => {
   }
 
   return (
-   <div className="max-w-2xl mx-auto mt-8 p-6 sm:bg-black/15 rounded-3xl   shadow-md  ">
-         <iframe
-        src="https://gentle-priority-829072.framer.app/"
-        style={{
-          position: "fixed",
-          top: "-80px",
-          left: 0,
-          width: "100%",
-          height: "120vh", // Push badge below viewport
-          border: "none",
-          zIndex: -10,
-          pointerEvents: "none",
-        }}
-        allow="fullscreen"
-      />
+   <div className="max-w-2xl mx-auto  p-6 sm:bg-black/15 rounded-3xl   shadow-md  ">
+    
     <div className="max-w-lg  md:max-w-2xl mx-auto flex flex-col justify-center items-center space-y-3 py-20">
       <Form>
         <h1 className="font-bold -mt-10 mb-3 text-3xl">POST YOUR CAR</h1>
@@ -304,7 +294,12 @@ const ListACar = () => {
             multiple
             onChange={handleImageChange}
           />
+
+
         </div>
+        
+
+        
 
         <div className="border flex w-[80%] rounded-lg overflow-auto space-x-2 mt-2">
           {selectedImages.map((image, index) => (

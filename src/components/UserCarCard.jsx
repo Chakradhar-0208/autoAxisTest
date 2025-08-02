@@ -1,8 +1,6 @@
 import React from "react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
-import { useTheme } from "./theme-provider";
-import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -16,7 +14,6 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const CarCard = ({ car, API_URL, setCars, cars }) => {
-  const { theme } = useTheme();
 
   const handleDelete = async () => {
     try {
@@ -38,14 +35,7 @@ const CarCard = ({ car, API_URL, setCars, cars }) => {
   };
 
   return (
-    // <div
-    //   className="border shadow-md rounded-xl p-4 w-[22rem] h-[23.675rem] transition transform hover:scale-[1.02] hover:shadow-lg duration-200 
-    //     bg-white text-black dark:bg-[#080808] dark:text-white 
-    //     hover:shadow-gray-300 dark:hover:shadow-gray-800"
-    // >
-    <div
-        className="border shadow-md rounded-xl p-4 w-[22rem] transition transform hover:scale-[1.02] hover:shadow-lg duration-200 h-[23.675rem] 
-      bg-gray-500 bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100">
+    <div className="border shadow-md rounded-xl p-4 w-[22rem] mx-2.5 my-1.5 transition transform hover:scale-[1.02] hover:shadow-lg duration-200 h-[24rem] bg-white bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-[0.01] backdrop-saturate-100 backdrop-contrast-100">
       <Link to={`/getCarById/${car._id}`}>
         <img
           src={car.images[0]}

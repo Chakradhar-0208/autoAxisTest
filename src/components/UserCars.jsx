@@ -1,7 +1,6 @@
 import { toast } from "sonner";
 import UserCarCard from "./UserCarCard";
 import { useEffect, useState } from "react";
-import { useTheme } from "./theme-provider";
 import { Button } from "../components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -20,7 +19,6 @@ const MyCars = () => {
   const navigate = useNavigate();
   const [cars, setCars] = useState([]);
 
-  const { theme } = useTheme();
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -63,27 +61,13 @@ const MyCars = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col justify-start items-center py-5 space-y-4">
-         <iframe
-        src="https://gentle-priority-829072.framer.app/"
-        style={{
-          opacity:0.9,
-          position: "fixed",
-          top: "-80px",
-          left: 0,
-          width: "100%",
-          height: "120vh", // Push badge below viewport
-          border: "none",
-          zIndex: -10,
-          pointerEvents: "none",
-        }}
-        allow="fullscreen"
-      />
-      <div className="flex justify-between items-center w-[85%]">
+    <div className="flex min-h-screen flex-col justify-start  flex-wrap max-w-7xl mx-auto px-4 pt-12 pb-8  items-center py-5  space-y-4">
+  
+      <div className="flex justify-between items-center w-full">
         <h2 className="text-3xl font-bold">MY CARS</h2>
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="  bg-white/90">Logout</Button>
+            <Button>Logout</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
@@ -108,7 +92,7 @@ const MyCars = () => {
         </Dialog>
       </div>
 
-      <div className="flex flex-wrap w-[80%] py-5 gap-4 justify-center">
+      <div className="flex flex-wrap py-5  gap-4 justify-center ">
         {cars.length > 0 ? (
           cars.map((car) => (
             <UserCarCard
@@ -120,7 +104,7 @@ const MyCars = () => {
             />
           ))
         ) : (
-          <p className="text-gray-500">No cars listed yet.</p>
+          <p>No cars listed yet.</p>
         )}
       </div>
     </div>

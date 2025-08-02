@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ModeToggle } from "./mode-toggle";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -52,7 +51,7 @@ const Login = ({ setIsLogged }) => {
         setMsg(data.message);
         setIsLogged(true);
         localStorage.setItem("userId", data.userId);
-        localStorage.setItem('userName',data.userName);
+        localStorage.setItem("userName", data.userName);
         console.log("userid form login, set into locallstorage", data.userId);
         setTimeout(() => {
           navigate("/");
@@ -69,32 +68,10 @@ const Login = ({ setIsLogged }) => {
   };
 
   return (
-    // <div className="relative flex flex-col justify-center  dark:bg-[#050505] h-[100dvh] items-center min-h-[500px] z-10">
     <div
-  className="flex flex-col justify-center items-center h-[100dvh] relative"
-  style={{ overflow: "hidden" }}
->
-  <div className="absolute top-0 left-0 w-full h-[100dvh] -z-10">
- <iframe
-  src="https://gentle-priority-829072.framer.app/"
-  style={{
-    opacity:0.8,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "130vh", // Push it far down
-    border: "none",
-    zIndex: -1, // Ensure it's behind the form
-  }}
-  allow="fullscreen"
-></iframe>
-
-  </div>
-
-      {/* <div className="absolute top-6 right-8">
-        <ModeToggle />
-      </div> */}
+      className="flex flex-col justify-center items-center h-[100dvh] relative"
+      style={{ overflow: "hidden" }}
+    >
       <Card className="w-[90dvw] flex flex-col justify-evenly min-h-[400px] min-w-[20rem] bg-black/25 sm:w-full max-w-sm">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
@@ -107,7 +84,6 @@ const Login = ({ setIsLogged }) => {
             </Link>
           </CardAction>
         </CardHeader>
-
 
         <form onSubmit={handleSubmit}>
           <CardContent className="flex flex-col gap-6">
@@ -139,7 +115,11 @@ const Login = ({ setIsLogged }) => {
 
           <CardFooter className="flex-col mt-4 gap-1">
             <p className="text-red-700 min-h-[1.5rem] text-sm">{msg}</p>
-            <Button type="submit" className="bg-white/90 w-full" disabled={isLoading}>
+            <Button
+              type="submit"
+              className="bg-white/90 w-full"
+              disabled={isLoading}
+            >
               {isLoading ? "Logging In..." : "Login"}
             </Button>
           </CardFooter>

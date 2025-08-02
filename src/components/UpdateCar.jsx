@@ -1,19 +1,26 @@
-import { toast } from "sonner"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import React, { useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
+import { toast } from "sonner";
+import { Skeleton } from "./ui/skeleton";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 const UpdateCar = () => {
-  const { id } = useParams()
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const [car, setCar] = useState(null)
-  const [images, setImages] = useState([])
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const API_URL = import.meta.env.VITE_API_URL
+  const [car, setCar] = useState(null);
+  const [images, setImages] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [formData, setFormData] = useState({
     make: "",
@@ -26,15 +33,15 @@ const UpdateCar = () => {
     location: "",
     mileage: "",
     color: "",
-    tag:""
-  })
+    tag: "",
+  });
 
   useEffect(() => {
-    document.title = "Update Car | AutoAxis"
+    document.title = "Update Car | AutoAxis";
     fetch(`${API_URL}/car/getCarbyId/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setCar(data)
+        setCar(data);
         setFormData({
           make: data.make || "",
           model: data.model || "",
@@ -47,76 +54,83 @@ const UpdateCar = () => {
           mileage: data.mileage?.toString() || "",
           color: data.color || "",
           tag: data.tag || "",
-        })
-      })
-  }, [id])
+        });
+      });
+  }, [id]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleImageChange = (e) => {
-    setImages(Array.from(e.target.files))
-  }
+    setImages(Array.from(e.target.files));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    const form = new FormData()
+    e.preventDefault();
+    setIsSubmitting(true);
+    const form = new FormData();
 
     Object.entries(formData).forEach(([key, value]) => {
-      form.append(key, value)
-    })
+      form.append(key, value);
+    });
 
     images.forEach((img) => {
-      form.append("images", img)
-    })
+      form.append("images", img);
+    });
 
     try {
       const res = await fetch(`${API_URL}/car/updateCar/${id}`, {
         credentials: "include",
         method: "PUT",
         body: form,
-      })
+      });
 
-      const data = await res.json()
+      const data = await res.json();
 
       if (res.ok) {
         toast.success("Car updated successfully", {
           description: "Redirecting to your car page...",
-        })
-        setTimeout(() => navigate(`/getCarbyId/${id}`), 1500)
+        });
+        setTimeout(() => navigate(`/getCarbyId/${id}`), 1500);
       } else {
-        throw new Error(data?.message || "Something went wrong!")
+        throw new Error(data?.message || "Something went wrong!");
       }
     } catch (err) {
       toast.error("Update failed", {
         description: err.message || "Failed to update car.",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
-  if (!car) return <div className="text-center mt-10">Loading...</div>
+  if (!car) {
+    return (
+      <div className="max-w-2xl mx-auto mt-8 p-6 sm:bg-black/15 rounded-3xl shadow-md space-y-5">
+        <Skeleton className="h-8 w-1/2 mx-auto" />
+        {Array.from({ length: 9 }).map((_, idx) => (
+          <div key={idx} className="space-y-1">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-10 w-full" />
+          </div>
+        ))}
+        <div className="space-y-1">
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-10 w-full" />
+        </div>
+        <div className="space-y-1">
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-10 w-full" />
+        </div>
+        <Skeleton className="h-10 w-full" />
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-2xl mx-auto mt-8 p-6 sm:bg-black/15 rounded-3xl   shadow-md  ">
-         <iframe
-        src="https://gentle-priority-829072.framer.app/"
-        style={{
-          position: "fixed",
-          top: "-80px",
-          left: 0,
-          width: "100%",
-          height: "120vh", // Push badge below viewport
-          border: "none",
-          zIndex: -10,
-          pointerEvents: "none",
-        }}
-        allow="fullscreen"
-      />
       <h2 className="text-2xl font-bold mb-6  text-center">Update Car</h2>
       <form onSubmit={handleSubmit} className="space-y-5">
         {[
@@ -147,7 +161,9 @@ const UpdateCar = () => {
           <Label>Fuel Type</Label>
           <Select
             value={formData.fuelType}
-            onValueChange={(val) => setFormData((prev) => ({ ...prev, fuelType: val }))}
+            onValueChange={(val) =>
+              setFormData((prev) => ({ ...prev, fuelType: val }))
+            }
           >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select fuel type" />
@@ -166,7 +182,9 @@ const UpdateCar = () => {
           <Label>Transmission</Label>
           <Select
             value={formData.transmission}
-            onValueChange={(val) => setFormData((prev) => ({ ...prev, transmission: val }))}
+            onValueChange={(val) =>
+              setFormData((prev) => ({ ...prev, transmission: val }))
+            }
           >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select transmission" />
@@ -180,7 +198,12 @@ const UpdateCar = () => {
 
         <div className="space-y-1">
           <Label htmlFor="images">Upload New Images</Label>
-          <Input type="file" id="images" multiple onChange={handleImageChange} />
+          <Input
+            type="file"
+            id="images"
+            multiple
+            onChange={handleImageChange}
+          />
         </div>
 
         {images.length > 0 && (
@@ -201,7 +224,7 @@ const UpdateCar = () => {
         </Button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default UpdateCar
+export default UpdateCar;
