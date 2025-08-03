@@ -73,10 +73,8 @@ const Signup = () => {
       className="flex flex-col justify-center items-center h-[100dvh] relative"
       style={{ overflow: "hidden" }}
     >
-      <div className="absolute top-0 left-0 w-full h-[100dvh] -z-10">
-  
-      </div>
-      <Card className="w-[90dvw] bg-black/25 min-w-[20rem] sm:w-full max-w-sm">
+
+      <Card className="backdrop-blur-[8px] w-[90dvw] bg-black/25 min-w-[20rem] sm:w-full max-w-sm">
         <CardHeader>
           <CardTitle>Create your account</CardTitle>
           <CardDescription>Fill in the form below to sign up.</CardDescription>
