@@ -35,7 +35,7 @@ const CarCard = ({ car, API_URL, setCars, cars }) => {
   };
 
   return (
-    <div className="border shadow-md rounded-xl p-4 w-[22rem] mx-2.5 my-1.5 transition transform hover:scale-[1.02] hover:shadow-lg duration-200 h-[24rem] bg-white bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-[0.01] backdrop-saturate-100 backdrop-contrast-100">
+    <div className="border shadow-md rounded-xl p-4 w-[22rem] mx-2.5 my-1.5 transition transform hover:scale-[1.02] hover:shadow-lg duration-200 h-[24rem] bg-black/20 bg-clip-padding backdrop-filter  backdrop-blur  backdrop-saturate-100 backdrop-contrast-100">
       <Link to={`/getCarById/${car._id}`}>
         <img
           src={car.images[0]}
@@ -80,7 +80,7 @@ const CarCard = ({ car, API_URL, setCars, cars }) => {
                 Delete
               </button>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className="max-w-[90%] rounded-lg sm:max-w-[425px] bg-black/10 backdrop-blur-md">
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                 <AlertDialogDescription>

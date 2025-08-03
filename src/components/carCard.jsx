@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const CarCard = ({ car }) => {
   return (
     <Link to={`/getCarById/${car._id}`}>
-      <div className="border shadow-md rounded-xl p-4 w-[22rem] transition transform hover:scale-[1.02] hover:shadow-lg duration-200 h-[24rem] bg-white bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-[0.01] backdrop-saturate-100 backdrop-contrast-100">
+      <div className="border shadow-md rounded-xl p-4 w-[22rem] transition transform hover:scale-[1.02] hover:shadow-lg duration-200 h-[24rem] bg-black/10 bg-clip-padding backdrop-filter  backdrop-blur  backdrop-saturate-100 backdrop-contrast-100">
         <img
           src={car.images[0]}
           alt={car.model}

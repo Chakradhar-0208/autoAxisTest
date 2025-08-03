@@ -98,11 +98,11 @@ const ListACar = () => {
   return (
    <div className="max-w-2xl mx-auto  p-6 sm:bg-black/15 rounded-3xl   shadow-md  ">
     
-    <div className="max-w-lg  md:max-w-2xl mx-auto flex flex-col justify-center items-center space-y-3 py-20">
+    <div className="max-w-lg  md:max-w-2xl mx-auto flex flex-col justify-center items-center space-y-3 py-20  relative z-10 ">
       <Form>
-        <h1 className="font-bold -mt-10 mb-3 text-3xl">POST YOUR CAR</h1>
+        <h1 className="font-bold -mt-10 mb-3 text-3xl backdrop-blur-[6px] rounded-lg">POST YOUR CAR</h1>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="make">Make</Label>
           <Input
             placeholder="e.g., Volkswagen"
@@ -115,7 +115,7 @@ const ListACar = () => {
           />
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="model">Model</Label>
           <Input
             placeholder="e.g., Virtus"
@@ -127,7 +127,7 @@ const ListACar = () => {
             onChange={handleChange}
           />
         </div>
-<div className="w-[80%]">
+<div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
   <Label htmlFor="variant">Variant</Label>
   <Input
     placeholder="e.g., Highline 1.0 TSI"
@@ -140,7 +140,7 @@ const ListACar = () => {
   />
 </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="price">Price</Label>
           <Input
             placeholder="e.g., 15,60,000"
@@ -152,7 +152,7 @@ const ListACar = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="tag">Tag</Label>
           <Input
             placeholder="NEW"
@@ -165,7 +165,7 @@ const ListACar = () => {
           />
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label>Fuel Type</Label>
           <Select
             value={formData.fuelType || ""}
@@ -186,7 +186,7 @@ const ListACar = () => {
           </Select>
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label>Transmission</Label>
           <Select
             value={formData.transmission || ""}
@@ -204,7 +204,7 @@ const ListACar = () => {
           </Select>
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label>Year</Label>
           <Select
             value={formData.year || ""}
@@ -219,7 +219,7 @@ const ListACar = () => {
           </Select>
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="location">Location</Label>
           <Input
             placeholder="e.g., Hyderabad"
@@ -232,7 +232,7 @@ const ListACar = () => {
           />
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="mileage">Mileage</Label>
           <Input
             placeholder="e.g., 16 km/l"
@@ -245,7 +245,7 @@ const ListACar = () => {
           />
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="kmsDriven">KMs Driven</Label>
           <Input
             placeholder="e.g., 30,000 km"
@@ -258,7 +258,7 @@ const ListACar = () => {
           />
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="description">Description</Label>
           <Input
             placeholder="e.g., Well-maintained, single owner..."
@@ -271,7 +271,7 @@ const ListACar = () => {
           />
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="color">Color</Label>
           <Input
             placeholder="e.g., Deep Black"
@@ -284,7 +284,7 @@ const ListACar = () => {
           />
         </div>
 
-        <div className="w-[80%]">
+        <div className="w-[80%] backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="images">Upload Images</Label>
           <Input
             required
@@ -301,7 +301,7 @@ const ListACar = () => {
 
         
 
-        <div className="border flex w-[80%] rounded-lg overflow-auto space-x-2 mt-2">
+        <div className="border flex w-[80%] backdrop-blur-[6px] rounded-lg overflow-auto space-x-2 mt-2">
           {selectedImages.map((image, index) => (
             <img
               key={index}

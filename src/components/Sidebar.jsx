@@ -14,8 +14,8 @@ const Sidebar = ({ isOpen, onClose }) => {
         className={`fixed bottom-[120px] right-[10px] h-[200px]   z-40 bg-black/30 backdrop-blur-lg text-white flex justify-center items-center border border-gray-600 shadow-lg transition-all rounded-xl  duration-300 ease-in-out
         ${
           isOpen
-            ? "  translate-y-0    w-[120px] opacity-100"
-            : " w-[80px]   mr-[16px] opacity-0 translate-y-[20%]   "
+            ? "  translate-y-0    w-[120px] opacity-100 "
+            : " w-[80px]   mr-[16px] opacity-0  translate-y-[20%] pointer-events-none  "
         }`}
       >
         <ul

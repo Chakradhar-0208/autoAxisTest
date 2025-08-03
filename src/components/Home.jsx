@@ -224,10 +224,10 @@ const Home = ({ setIsLogged }) => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 overflow-hidden  min-h-screen pb-4 ">
         <div className="max-w-7xl mx-auto px-4 pb-4"></div>
         <div className="flex justify-between items-center my-4">
-          <h1 className="text-3xl font-bold">Featured Cars</h1>
+          <h1 className="text-3xl font-bold  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">Featured Cars</h1>
         </div>
 
-        <fieldset className="bg-black bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 shadow-md border px-4 py-2 rounded-xl mb-10">
+        <fieldset className="bg-black/20 bg-clip-padding backdrop-filter  backdrop-blur  backdrop-saturate-100 backdrop-contrast-100 shadow-md border px-4 py-2 rounded-xl mb-10">
           <legend className="font-bold   px-2">Filters</legend>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
             <Select

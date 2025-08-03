@@ -63,13 +63,13 @@ const MyCars = () => {
   return (
     <div className="flex min-h-screen flex-col justify-start  flex-wrap max-w-7xl mx-auto px-4 pt-12 pb-8  items-center py-5  space-y-4">
   
-      <div className="flex justify-between items-center w-full">
-        <h2 className="text-3xl font-bold">MY CARS</h2>
+      <div className="flex justify-between items-center relative w-full">
+        <h2 className="text-3xl font-bold bg-black/30 backdrop-blur-[6px] rounded-lg">MY CARS</h2>
         <Dialog>
           <DialogTrigger asChild>
             <Button>Logout</Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
+          <DialogContent className="max-w-[90%] rounded-lg sm:max-w-[425px] bg-black/10 backdrop-blur-md">
             <DialogHeader>
               <DialogTitle>Are You Sure?</DialogTitle>
               <DialogDescription>
@@ -77,7 +77,7 @@ const MyCars = () => {
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
-              <DialogClose asChild>
+              <DialogClose asChild className="sm:mt-0 mt-3">
                 <Button variant="outline">Cancel</Button>
               </DialogClose>
               <Button

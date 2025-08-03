@@ -86,13 +86,13 @@ const CarDetails = () => {
     );
   }
   return (
-    <div className="max-w-full z-10 ">
+    <div className="max-w-full relative z-10 ">
       <div className=" max-w-4xl mx-auto px-4 pb-10 pt-6">
-        <h1 className="text-3xl font-bold mb-2 text-primary ">
+        <h1 className="text-3xl font-bold mb-2 text-primary bg-black/20 inline rounded-lg">
           {car.make} {car.model}
         </h1>
         <div className="flex justify-between items-center mb-4 ">
-          <p className="text-xl font-semibold text-green-400">
+          <p className="text-xl font-semibold text-green-400  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             ₹{new Intl.NumberFormat("en-IN").format(car.price)}
           </p>
           <Button className="h-[30px] sm:h-[36px]">Contact</Button>
@@ -115,15 +115,15 @@ const CarDetails = () => {
           </Carousel>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base mb-6">
-          <div className="flex items-center gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base mb-6  bg-black/0  rounded-lg ">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <CarFront className="w-4 h-4" />
-            <span>
+            <span >
               <strong>Make:</strong> {car.make}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2   bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <CarFront className="w-4 h-4" />
             <span>
               <strong>Model:</strong> {car.model}
@@ -131,7 +131,7 @@ const CarDetails = () => {
           </div>
 
           {car.variant && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
               <BadgeInfo className="w-4 h-4" />
               <span>
                 <strong>Variant:</strong> {car.variant}
@@ -139,35 +139,35 @@ const CarDetails = () => {
             </div>
           )}
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <Calendar className="w-4 h-4" />
             <span>
               <strong>Year:</strong> {car.year}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <Fuel className="w-4 h-4" />
             <span>
               <strong>Fuel Type:</strong> {car.fuelType}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <Gauge className="w-4 h-4" />
             <span>
               <strong>Transmission:</strong> {car.transmission}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <MapPin className="w-4 h-4" />
             <span>
               <strong>Location:</strong> {car.location}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <Gauge className="w-4 h-4" />
             <span>
               <strong>KMs Driven:</strong>{" "}
@@ -177,28 +177,28 @@ const CarDetails = () => {
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <Gauge className="w-4 h-4" />
             <span>
               <strong>AVG Mileage:</strong> {car.mileage} kmpl
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <PaintBucket className="w-4 h-4" />
             <span>
               <strong>Color:</strong> {car.color}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <UserCircle className="w-4 h-4" />
             <span>
               <strong>Posted By:</strong> {car.postedBy?.name || "Admin"}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
             <Calendar className="w-4 h-4" />
             <span>
               <strong>Posted On:</strong>{" "}
@@ -209,11 +209,11 @@ const CarDetails = () => {
 
         {car.description && (
           <div className="mt-6">
-            <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
+            <h3 className="text-xl font-semibold mb-2 flex items-center gap-2  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">
               <Info className="w-5 h-5" />
               Description
             </h3>
-            <p className=" leading-relaxed">{car.description}</p>
+            <p className=" leading-relaxed  bg-black/20  rounded-lg backdrop-blur-[6px] w-fit px-2">{car.description}</p>
           </div>
         )}
 

@@ -1,11 +1,11 @@
 import { Toaster } from "sonner";
-import LightRays from "./components/LightRays";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
+import DotGrid from "./components/DotGrid";
 import { useEffect, useState } from "react";
 import ListACar from "./components/ListACar";
 import UserCars from "./components/UserCars";
@@ -32,7 +32,6 @@ function LoadingSkeleton({ path }) {
 
   return (
     <div className="flex flex-col justify-center items-center h-[100dvh] relative overflow-hidden">
-
       <div className="absolute top-0 left-0 w-full h-[100dvh] -z-10">
         <iframe
           src="https://gentle-priority-829072.framer.app/"
@@ -80,7 +79,7 @@ function AppRouter({ isLogged, setIsLogged, checkLogin }) {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   useEffect(() => {
-    checkLogin(); 
+    checkLogin();
   }, [location.pathname]);
   if (isLogged === null) {
     return <LoadingSkeleton path={location.pathname} />;
@@ -89,23 +88,29 @@ function AppRouter({ isLogged, setIsLogged, checkLogin }) {
   return (
     <>
       <>
-        {isLogged && <Header  />}
+        {isLogged && <Header />}
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        {isLogged && <OptionBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
+        {isLogged && (
+          <OptionBar
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+          />
+        )}
       </>
-           <div  style={{
-          opacity:0.9   ,
+      <div
+        style={{
           position: "fixed",
           top: "-80px",
-          left: 0,
-          width: "100%",
+          left: "-20px",
+          width: "110vw",
           height: "110vh",
           border: "none",
           zIndex: 0,
           pointerEvents: "none",
         }}
-        allow="fullscreen">
-  <LightRays
+        allow="fullscreen"
+      >
+        {/* <LightRays
     raysOrigin="top-center"
     raysColor="#ffffff"
     raysSpeed={0.8}
@@ -116,8 +121,20 @@ function AppRouter({ isLogged, setIsLogged, checkLogin }) {
     noiseAmount={0.1}
     distortion={0.01}
     className="custom-rays"
-  />
-</div>
+  /> */}
+
+        <DotGrid
+          dotSize={8}
+          gap={20}
+          baseColor="#000"
+          activeColor="#ffffff"
+          proximity={150}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
       <Routes>
         <Route
           path="/"
@@ -158,14 +175,13 @@ function App() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const checkLogin = async () => {
-
     try {
       const res = await fetch(`${API_URL}/check-login`, {
         credentials: "include",
       });
       const data = await res.json();
 
-        setIsLogged(res.status === 200 && data?.message?.includes("true"));
+      setIsLogged(res.status === 200 && data?.message?.includes("true"));
     } catch (err) {
       console.error("Check-login failed:", err);
       setIsLogged(false);
@@ -177,7 +193,7 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="dark">
       <Router>
         <ScrollToTop />
         <Toaster position="top-right" />

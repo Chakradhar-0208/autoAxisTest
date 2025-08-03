@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div
-      className="sticky top-0 z-50 w-full h-[80px] mx-auto px-1.5 md:px-6 lg:px-16 flex justify-between items-center rounded-b-xl border-b border-gray-900 border-opacity-25  shadow-md
-       bg-clip-padding backdrop-filter backdrop-blur-xl bg-black bg-opacity-20 backdrop-saturate-100 backdrop-contrast-100  text-white"
+      className="sticky top-0 z-50 w-full h-[80px] mx-auto px-1.5 md:px-6 lg:px-16 flex justify-between items-center rounded-b-xl border-b border-gray-900/25  shadow-md
+       bg-clip-padding backdrop-filter backdrop-blur-xl bg-black/20 backdrop-saturate-100 backdrop-contrast-100  text-white"
     >
       <a href="/">
         <img

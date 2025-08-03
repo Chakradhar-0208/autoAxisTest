@@ -111,16 +111,16 @@ const UpdateCar = () => {
       <div className="max-w-2xl mx-auto mt-8 p-6 sm:bg-black/15 rounded-3xl shadow-md space-y-5">
         <Skeleton className="h-8 w-1/2 mx-auto" />
         {Array.from({ length: 9 }).map((_, idx) => (
-          <div key={idx} className="space-y-1">
+          <div key={idx} className="backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
             <Skeleton className="h-4 w-24" />
             <Skeleton className="h-10 w-full" />
           </div>
         ))}
-        <div className="space-y-1">
+        <div className="backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Skeleton className="h-4 w-24" />
           <Skeleton className="h-10 w-full" />
         </div>
-        <div className="space-y-1">
+        <div className="backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Skeleton className="h-4 w-24" />
           <Skeleton className="h-10 w-full" />
         </div>
@@ -130,8 +130,8 @@ const UpdateCar = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 p-6 sm:bg-black/15 rounded-3xl   shadow-md  ">
-      <h2 className="text-2xl font-bold mb-6  text-center">Update Car</h2>
+    <div className="relative z-10  max-w-2xl mx-auto mt-8 p-6 rounded-3xl   shadow-md  ">
+      <h2 className="text-3xl font-bold mb-6  text-center">UPDATE CAR</h2>
       <form onSubmit={handleSubmit} className="space-y-5">
         {[
           ["make", "Make"],
@@ -144,7 +144,7 @@ const UpdateCar = () => {
           ["mileage", "Mileage"],
           ["color", "Color"],
         ].map(([key, label]) => (
-          <div key={key} className="space-y-1">
+          <div key={key} className="backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
             <Label htmlFor={key}>{label}</Label>
             <Input
               id={key}
@@ -157,7 +157,7 @@ const UpdateCar = () => {
           </div>
         ))}
 
-        <div className="space-y-1">
+        <div className="backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label>Fuel Type</Label>
           <Select
             value={formData.fuelType}
@@ -178,7 +178,7 @@ const UpdateCar = () => {
           </Select>
         </div>
 
-        <div className="space-y-1">
+        <div className="backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label>Transmission</Label>
           <Select
             value={formData.transmission}
@@ -196,7 +196,7 @@ const UpdateCar = () => {
           </Select>
         </div>
 
-        <div className="space-y-1">
+        <div className="backdrop-blur-[6px] rounded-lg p-1.5 pt-0">
           <Label htmlFor="images">Upload New Images</Label>
           <Input
             type="file"
@@ -207,7 +207,7 @@ const UpdateCar = () => {
         </div>
 
         {images.length > 0 && (
-          <div className="flex flex-wrap gap-2 border p-2 rounded-md">
+          <div className="flex backdrop-blur-[6px] rounded-lg flex-wrap gap-2 border p-2">
             {images.map((img, idx) => (
               <img
                 key={idx}
