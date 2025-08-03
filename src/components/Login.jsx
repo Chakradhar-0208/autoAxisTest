@@ -72,7 +72,7 @@ const Login = ({ setIsLogged }) => {
       className="flex flex-col justify-center items-center h-[100dvh] relative"
       style={{ overflow: "hidden" }}
     >
-      <Card className="w-[90dvw] flex flex-col justify-evenly min-h-[400px] min-w-[20rem] bg-black/25 sm:w-full max-w-sm">
+      <Card className="backdrop-blur-[8px] w-[90dvw] flex flex-col justify-evenly min-h-[400px] min-w-[20rem] bg-black/25 sm:w-full max-w-sm">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
           <CardDescription>
